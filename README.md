@@ -1,73 +1,98 @@
-# React + TypeScript + Vite
+# Memory Card Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A browser-based Memory Card Game built with React and TypeScript.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 4x4 memory game board
+- 8 unique matching pairs
+- Randomized card shuffle
+- Match and mismatch handling
+- Move counter
+- Restart game functionality
+- Smooth animations and transitions
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- pnpm
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Setup Instructions
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Install dependencies
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Run development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm dev
 ```
+
+## Build project
+
+```bash
+pnpm build
+```
+
+---
+
+# Project Structure
+
+src/
+├── components/
+├── hooks/
+├── utils/
+├── types/
+
+---
+
+# Approach
+
+The application is separated into reusable UI components and isolated game logic.
+
+- Components handle UI rendering
+- Custom hooks manage game state and logic
+- Utility functions contain reusable helper logic
+
+This structure keeps the application scalable and maintainable.
+
+---
+
+# Key Decisions
+
+## React + TypeScript
+
+TypeScript improves maintainability and reduces runtime issues through static typing.
+
+## Tailwind CSS
+
+Tailwind was used for faster styling and easier component-based UI development.
+
+## Custom Hook
+
+The game logic is extracted into a custom hook to improve readability and separation of concerns.
+
+---
+
+# Assumptions
+
+- Only two cards can be flipped at a time
+- Matched cards remain visible
+- The board reshuffles on every new game
+
+---
+
+# Trade-offs
+
+- React local state was sufficient for the current application size, so additional state management libraries were not introduced.
+- The focus was kept on clean architecture and gameplay rather than adding unnecessary complexity.

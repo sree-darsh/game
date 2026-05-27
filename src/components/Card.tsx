@@ -1,19 +1,27 @@
 interface CardProps {
-  item: string;
-  index: number;
-  handleClick: (index: number) => void;
-  isFlipped: boolean;
+  value: string;
+  flipped: boolean;
+  onClick: () => void;
 }
 
-const Card = ({ item, index, handleClick, isFlipped }: CardProps) => {
+function Card({ value, flipped, onClick }: CardProps) {
   return (
     <button
-      className="bg-gray-300 rounded w-full h-24 text-2xl font-bold"
-      onClick={() => handleClick(index)}
+      onClick={onClick}
+      className={`
+        h-24 rounded-2xl text-3xl font-bold
+        flex items-center justify-center
+        transition-all duration-300 shadow-lg
+        ${
+          flipped
+            ? "bg-white text-slate-900 scale-95"
+            : "bg-blue-500 hover:bg-blue-600 hover:scale-105 text-white"
+        }
+      `}
     >
-      {isFlipped ? item : "?"}
+      {flipped ? value : "?"}
     </button>
   );
-};
+}
 
 export default Card;
